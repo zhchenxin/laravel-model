@@ -2,7 +2,7 @@
   "name": "zhchenxin/laravel-model",
   "description": "laravel advanced model",
   "keywords": ["model", "laravel"],
-  "license": "Apache",
+  "license": "MIT",
   "authors": [
     {
       "name": "zhchenxin",
