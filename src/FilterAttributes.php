@@ -4,12 +4,17 @@ namespace Zhchenxin\Model;
 
 use Illuminate\Database\Eloquent\Builder;
 
-trait ExternalField
+/**
+ * 属性扩展
+ * Trait ExternalField
+ * @package Zhchenxin\Model
+ */
+trait FilterAttributes
 {
     /**
      * 字段预加载配置
      */
-    private static $field_relations = [];
+//    private static $field_relations = [];
 
     /**
      * 通用方法关联查询部分字段信息
@@ -35,13 +40,23 @@ trait ExternalField
         $map = [];
         $fields = static::_getFields($field);
         foreach ($fields as $value) {
-            if (ends_with($value, 'date')) {
-                $map[$value] = $this->$value->toDateTimeString();
-            } else {
-                $map[$value] = $this->$value;
-            }
+            $map[$value] = $this->_getField($value);
         }
         return $map;
+    }
+
+    public function newCollection(array $models = [])
+    {
+        return new CustomCollection($models);
+    }
+
+    private function _getField($field)
+    {
+        $value = $this->$field;
+        if ($value instanceof \DateTimeInterface ) {
+            $value = $this->serializeDate($value);
+        }
+        return $value;
     }
 
     /**
