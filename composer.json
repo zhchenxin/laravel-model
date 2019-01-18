@@ -1,0 +1,20 @@
+{
+  "name": "zhchenxin/laravel-model",
+  "description": "laravel advanced model",
+  "keywords": ["model", "laravel"],
+  "license": "Apache",
+  "authors": [
+    {
+      "name": "zhchenxin",
+      "email": "1577838065@qq.com"
+    }
+  ],
+  "require-dev": {
+    "illuminate/database": "~5.1"
+  },
+  "autoload": {
+    "psr-4": {
+      "Zhchenxin\\Model\\": "src/"
+    }
+  }
+}
